@@ -68,8 +68,8 @@ const Container = () => {
         });
     };
 
-    
-    
+
+
     const sendMessage = () => {
         if (isLoading) return;
         if ((messageText.trim().length !== 0)) {
@@ -85,8 +85,8 @@ const Container = () => {
         }
     }
 
-    useEffect(()=> {
-        if(isLoading === false){
+    useEffect(() => {
+        if (isLoading === false) {
             focus?.current?.focus();
         }
     }, [isLoading])
@@ -101,7 +101,7 @@ const Container = () => {
     return (
         <div className={`bg-${darkMode}`}>
             <div className={`flex gap-8 items-center justify-center h-[10vh] relative header-${darkMode}`}>
-                <h1 className={`text-${darkMode} py-4 text-2xl  font-bold  text-center py-7`}>ChatGPT</h1>
+                <h1 className={`text-${darkMode} py-4  text-2xl  font-bold  text-center py-7 `}>CHATGPT</h1>
                 <div className="absolute right-4" onClick={toggleDarkMode}>
                     {darkMode ? <Image src="/assets/images/icons/light-sun.svg" alt="tool" width={0} height={0} className="w-12 h-12" /> : <Image src="/assets/images/icons/dark-moon.svg" alt="tool" width={0} height={0} className="w-12 h-12" />}
                 </div>
@@ -111,13 +111,13 @@ const Container = () => {
                     {userChat.map((ele, key) => {
                         return (
                             <div key={`blockchat-${key}`}>
-                                <div key={`userchat-${key}`} className='flex flex-col my-2 items-end justify-center'>
-                                    <div className={`input-user-chat-bg-${darkMode} input-user-chat-color-${darkMode} rounded-2xl px-6 py-2 max-w-[50%] max-lg:max-w-full break-words`}>{ele}</div>
+                                <div key={`userchat-${key}`} className='chat chat-end flex flex-col my-2 items-end justify-center'>
+                                    <div className={`input-user-chat-bg-${darkMode} chat-bubble input-user-chat-color-${darkMode} rounded-2xl px-6 py-2 max-w-[50%] max-lg:max-w-full break-words`}>{ele}</div>
                                 </div>
-                                {botChat[key] && <div key={`botchat-${key}`} className='flex flex-col my-2 items-start justify-center break-words'>
-                                    <div className={`input-bot-chat-bg-${darkMode} input-user-chat-color-${darkMode} rounded-2xl px-6 py-2 max-w-[50%] max-lg:max-w-full`}>
+                                {botChat[key] && <div key={`botchat-${key}`} className=' chat chat-start flex flex-col my-2 items-start justify-center break-words'>
+                                    <div className={`input-bot-chat-bg-${darkMode}   chat-bubble input-user-chat-color-${darkMode} rounded-2xl px-6 py-2 max-w-[50%] max-lg:max-w-full`}>
                                         {botChat[key].split("\n").map((ele: any, indkey: any) => {
-                                            return <p key={`indkey-${indkey}`}>{ele}</p>
+                                            return <p key={`indkey-${indkey}`} className="">{ele}</p>
                                         })}</div>
                                 </div>}
                             </div>
